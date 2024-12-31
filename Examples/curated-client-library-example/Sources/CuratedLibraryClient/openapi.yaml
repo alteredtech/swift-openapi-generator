@@ -32,5 +32,9 @@ components:
         message:
           type: string
           description: The string representation of the greeting.
+        messageId:
+          type: integer
+          description: The integer representation of the greeting.
       required:
         - message
+        - messageId

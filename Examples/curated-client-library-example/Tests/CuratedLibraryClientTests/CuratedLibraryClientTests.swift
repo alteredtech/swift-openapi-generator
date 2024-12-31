@@ -12,6 +12,7 @@
 //
 //===----------------------------------------------------------------------===//
 import XCTest
+import OpenAPIRuntime
 @testable import CuratedLibraryClient
 
 final class CuratedLibraryClientTests: XCTestCase {
@@ -49,9 +50,9 @@ struct TestClient: APIProtocol {
         var name: String?
     }
 
-    func getGreeting(_ input: Operations.getGreeting.Input) async throws -> Operations.getGreeting.Output {
+    func getGreeting(_ input: Operations.getGreeting.Input) async throws -> Operations.getGreeting.Ouput {
         guard !shouldFail else { throw TestError(name: input.query.name) }
         let name = input.query.name ?? "Stranger"
-        return .ok(.init(body: .json(.init(message: "(Test) Hello, \(name)!"))))
+        return .ok(.init(body: .json(.init(message: "(Test) Hello, \(name)!", messageId: 42))))
     }
 }

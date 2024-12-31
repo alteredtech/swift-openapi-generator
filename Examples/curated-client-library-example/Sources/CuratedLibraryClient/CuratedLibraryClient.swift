@@ -37,10 +37,10 @@ public struct GreetingClient {
 
     /// Fetches the customized greeting for the provided name.
     /// - Parameter name: The name for which to provide a greeting, or nil to get a default.
-    /// - Returns: A customized greeting message.
+    /// - Returns: A customized greeting model.
     /// - Throws: An error if the underlying HTTP client fails.
-    public func getGreeting(name: String?) async throws -> String {
+    public func getGreeting(name: String?) async throws -> Greeting {
         let response = try await underlyingClient.getGreeting(query: .init(name: name))
-        return try response.ok.body.json.message
+        return try Greeting(from: response.ok.body.json)
     }
 }

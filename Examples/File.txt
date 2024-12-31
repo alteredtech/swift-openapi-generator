@@ -1,0 +1,1 @@
+/Users/michael.einreinhof/Coding/xcode-apps/swift-openapi-generator/Examples/curated-client-library-example
